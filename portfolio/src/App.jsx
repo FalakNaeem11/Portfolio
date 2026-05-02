@@ -413,7 +413,8 @@ const projects = [
     title: 'Mentor X', 
     category: 'Product Management',
     description: 'Platform connecting startups with mentors using cash-barter-credits and equity model',
-    year: '2025'
+    year: '2025',
+    link: 'https://mentor-x.lovable.app'
   },
   { 
     id: 2, 
@@ -486,11 +487,15 @@ function Work() {
               <div className="project-number">0{index + 1}</div>
               <div className="project-info">
                 <span className="project-year">{project.year}</span>
-                <h3 className="project-title">{project.title}</h3>
+                {project.link ? (
+                  <a href={project.link} target="_blank" className="project-title">{project.title}</a>
+                ) : (
+                  <h3 className="project-title">{project.title}</h3>
+                )}
                 <span className="project-category">{project.category}</span>
                 <p className="project-description">{project.description}</p>
               </div>
-              <div className="project-arrow">→</div>
+              <div className="project-arrow">{project.link ? '↗' : '→'}</div>
             </motion.div>
           ))}
         </div>
