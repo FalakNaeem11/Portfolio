@@ -662,7 +662,7 @@ function Contact() {
         
         <div className="social-links">
           <motion.a href="https://github.com/FalakNaeem11" target="_blank" whileHover={{ y: -5 }}>GitHub</motion.a>
-          <motion.a href="https://linkedin.com/in/falak-naeem" target="_blank" whileHover={{ y: -5 }}>LinkedIn</motion.a>
+          <motion.a href="https://www.linkedin.com/in/falak-naeem-86a0142a6/" target="_blank" whileHover={{ y: -5 }}>LinkedIn</motion.a>
           <motion.a href="mailto:imfalaknaeem@gmail.com" whileHover={{ y: -5 }}>Email</motion.a>
         </div>
       </motion.div>
