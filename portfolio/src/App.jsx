@@ -195,6 +195,7 @@ function BackgroundPlane() {
 
 function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   
   const smoothScroll = useSpring(scrollYProgress, {
@@ -221,6 +222,7 @@ function Navbar() {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setActiveSection(id);
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -231,7 +233,7 @@ function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
-      <div className="nav-logo">
+      <div className="nav-logo" onClick={() => scrollTo('home')}>
         <span className="logo-f">F</span>
         <span className="logo-dot">.</span>
       </div>
@@ -252,6 +254,29 @@ function Navbar() {
           </motion.li>
         ))}
       </ul>
+      <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      {mobileMenuOpen && (
+        <motion.div 
+          className="mobile-menu"
+          initial={{ opacity: 0, x: '100%' }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: '100%' }}
+        >
+          {navItems.map((item, i) => (
+            <button 
+              key={item.id}
+              className={activeSection === item.id ? 'active' : ''}
+              onClick={() => scrollTo(item.id)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </motion.div>
+      )}
     </motion.nav>
   );
 }
